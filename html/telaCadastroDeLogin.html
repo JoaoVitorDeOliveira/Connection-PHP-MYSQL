@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contato</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/stylesTelaCadastroDeLogin.css">
+</head>
+<body>
+	<div class="box">
+		<h2>Cadastrar</h2>
+		<form action="../php/gravarNovosCadastros.php" method="POST">
+			<div>
+				<input type="text" name="ra" required="">
+				<label>RA</label>
+			</div>
+			<div>	
+				<input type="text" name="nome" required="">
+				<label>Nome</label>
+			</div>
+			<div>	
+				<input type="password" name="senha" required="">
+				<label>Senha</label>
+			</div>
+			<div>
+				<input type="submit" name="btn_enviar" value="Cadastrar">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
