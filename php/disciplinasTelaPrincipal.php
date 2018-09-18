@@ -20,8 +20,9 @@
 
 					while ($i = mysqli_fetch_assoc($query)) { 
 
-					echo "<tr><td><a href='../html/telaPrincipal.html'> {$i['Disciplinas']} </a></td></tr>";			 
-
+					echo "<tr><td><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
+							<input type='submit' name='mat' value='{$i['Disciplinas']}'>
+						</form></td></tr>";	
 				}
 			?>	
 		</table>
