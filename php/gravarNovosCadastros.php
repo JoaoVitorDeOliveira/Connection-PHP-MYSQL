@@ -1,25 +1,14 @@
 <?php
-	//Conectando com o banco de Dados
-	$servidor = 'localhost';
-	$user = 'root';
-	$senha = '';
-	$banco = 'joao';
 
-	$conectar = mysqli_connect($servidor, $user, $senha, $banco);
-    if(!$conectar){
-        die("Falha ao conectar". mysql_errno);
-	}	
+    include "conexaoComOMySql.php";
+
 	//Criar variáveis e pegar valores dos forms
-    $nome = '';
-    $ra = '';
-    $senha = '';
-
-    $nome = $_POST["nome"];
     $ra = $_POST["ra"];
+    $nome = $_POST["nome"];
     $senha = $_POST["senha"];
 	
 	//Criando a query
-	$cos = "INSERT INTO cadastrosdealuno(RA, NOME, SENHA) ";
+	$cos = "INSERT INTO TB_CADASTRO_ALUNOS(RA, NOME, SENHA) ";
     $cos .= "VALUES ('$ra', '$nome', '$senha')";
 	
 	    if(isset($_POST["btn_enviar"])){
