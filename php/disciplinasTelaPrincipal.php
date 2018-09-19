@@ -1,34 +1,37 @@
 <?php include "conexaoComOMySql.php" ?>	
 
-<html> 
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>Treinando com Tabelas</title>
-	<link rel="stylesheet" type="text/css" href="../css/stylesDisciplinasTelaPrincipal.css">
-	<style type="text/css"> body{background: white}</style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesDisciplinasTelaPrincipal.css" />
+    <script src="main.js"></script>
 </head>
 <body>
-	<h1><center>Tabela</center></h1>
-	<div class="container">
-		<table style="width: 800px; max-width: 800px;" >
-			<thead>
-				<th>Disciplinas</th>		
-			</thead>
-			<?php 
+
+    <div class="info">
+            João Vitor de Oliveira </br></br>
+            317113712
+    </div>
+    <div class="lateral"></div>
+   <section>
+   <h1>Disciplinas</h1>
+    <ul>
+		<?php 
 					//Preenchendo a tabela com os dados
 					$query = mysqli_query($conectar, "SELECT `Disciplinas` FROM TB_DISCIPLINAS");
 
 					while ($i = mysqli_fetch_assoc($query)) { 
 
-					echo "<tr><td><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
+					echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
 							<input type='submit' name='mat' value='{$i['Disciplinas']}'>
-						</form></td></tr>";	
+						</form></h2></div></li>";	
 				}
-			?>	
-		</table>
-		<a class="btn_voltar" href="../html/telaPrincipal.html"><center>Voltar</center></a>
-	</div>
-	
+		?>
+    </ul>
+	</section>
 </body>
 </html>
 

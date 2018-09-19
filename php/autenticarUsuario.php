@@ -14,6 +14,7 @@
         }
     }
     
-    echo "RA ou Senha inválido";
+    echo "<script>alert('RA ou Senha incorreto!');</script>";
+    echo "<script>javascript:window.location='../html/telaDeLogin.html';</script>";  
     
 ?>
