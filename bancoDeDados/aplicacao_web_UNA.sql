@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 18/09/2018 às 22:33
+-- Tempo de geração: 19/09/2018 às 05:22
 -- Versão do servidor: 10.1.30-MariaDB
 -- Versão do PHP: 7.2.1
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `TB_CADASTRO_ALUNOS` (
   `RA` bigint(20) NOT NULL,
-  `NOME` varchar(255) NOT NULL,
+  `NOME` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `SENHA` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -50,8 +50,26 @@ INSERT INTO `TB_CADASTRO_ALUNOS` (`RA`, `NOME`, `SENHA`) VALUES
 
 CREATE TABLE `TB_DISCIPLINAS` (
   `ID` int(10) NOT NULL,
-  `Disciplinas` varchar(255) NOT NULL
+  `Disciplinas` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `TB_DISCIPLINAS`
+--
+
+INSERT INTO `TB_DISCIPLINAS` (`ID`, `Disciplinas`) VALUES
+(1, 'CÃ¡lculo Integral'),
+(2, 'Fisica Mecanica'),
+(3, 'Fisica Termodinamica'),
+(4, 'Fisica Eletricidade e Magnetismo'),
+(5, 'Calculo Diferencial'),
+(6, 'Calculo de Varias Variaveis'),
+(7, 'Mecanica dos Solidos'),
+(8, 'Sinais e Sistemas'),
+(9, 'Estatistica e Probabilidade'),
+(10, 'G.A.A.L'),
+(11, 'P.O.O'),
+(12, 'Fenômenos de Transporte');
 
 --
 -- Índices de tabelas apagadas
@@ -77,7 +95,7 @@ ALTER TABLE `TB_DISCIPLINAS`
 -- AUTO_INCREMENT de tabela `TB_DISCIPLINAS`
 --
 ALTER TABLE `TB_DISCIPLINAS`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
