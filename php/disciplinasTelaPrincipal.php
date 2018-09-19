@@ -24,11 +24,11 @@
 					$query = mysqli_query($conectar, "SELECT `Disciplinas` FROM TB_DISCIPLINAS");
 
 					while ($i = mysqli_fetch_assoc($query)) { 
-
+ 
 					echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
 							<input type='submit' name='mat' value='{$i['Disciplinas']}'>
 						</form></h2></div></li>";	
-				}
+                }
 		?>
     </ul>
 	</section>
