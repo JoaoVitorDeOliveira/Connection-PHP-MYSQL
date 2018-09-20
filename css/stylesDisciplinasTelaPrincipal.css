@@ -5,21 +5,14 @@ body
     font-family: sans-serif;
     background: url(../res/Aleatórios-parte-2_O-que-é-blog-um-guia-detalhado.png);
 }
-section
-{
-    width: 100%;
-    height: 100vh;
-}
-
 ul
 {
-    margin: 0;
+    margin: 10px;
     padding: 20px;
     position: absolute;
-    height: 400px;
-    max-height: 500px;
-    width: 500px;
-    top: 58%;
+    height: 450px;
+    width: 600px;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
@@ -39,18 +32,18 @@ input
 }
 h1
 {
-    position: absolute;
-    margin-bottom: 10px;
-    padding: 0;
-    color: #fff;
+    float: left;
+    margin-left: 40px;
+    margin-top: 0px;
+    padding: 20px; 
+    color: white;
+    font-size: 40px;
     font-weight: bold;
-    position: absolute;
-    top: 7%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 15px;
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, .5);
-    font-size: 42px;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, .5);
+    background: #a234d4;
+    border-radius: 0px 0px 20px 20px;
+    transition: .3s;
+    text-align: center;
 }
 
 ul li
@@ -61,7 +54,9 @@ ul li
     border-bottom: solid 1px #922fc0;
     text-align: center;
     padding: 0;
-    margin: 0;
+    border-top: 1px solid #a234d4;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 input:hover
@@ -92,5 +87,49 @@ input:hover
     cursor: pointer;
     transition: .3s;
 }
+.crud
+{
+    display: flex;
+}
+.del
+{
+    color: white;
+    float: left;
+    border-radius: 15px 0 0 15px;
+    background: rgb(214, 14, 14);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    transition: .6s;
+    border: none;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+
+}
+.del:hover
+{
+    cursor: pointer;
+    transform: rotateX(360deg);
+}
+.add
+{
+    background: rgb(7, 184, 101);
+    color: white;
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 10px;
+    border-radius: 0 0 15px;
+    border: none;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+    transition: .6s;
+}
+.add:hover
+{
+    cursor: pointer;
+    transform: rotateX(360deg);
+}
+
+
 
 
