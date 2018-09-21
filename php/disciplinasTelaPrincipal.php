@@ -32,7 +32,7 @@
         </div>
 		<?php 
             //Preenchendo a tabela com os dados
-            $query = mysqli_query($conectar, "SELECT `Disciplinas` FROM TB_DISCIPLINAS ORDER BY `Disciplinas` DESC");
+            $query = mysqli_query($conectar, "SELECT `Disciplinas` FROM TB_DISCIPLINAS");
 
             while ($i = mysqli_fetch_assoc($query)) { 
 
