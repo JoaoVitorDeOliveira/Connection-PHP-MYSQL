@@ -67,6 +67,7 @@ input[type="submit"]
     display: flex;
     margin-top: 10px;
     border-bottom: none;
+    padding-bottom: 15px;
 }
 .del
 {
