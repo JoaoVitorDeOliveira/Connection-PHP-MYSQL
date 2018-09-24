@@ -62,3 +62,48 @@ input[type="submit"]
     margin-top: 30px;
     border: none;
 }
+.crud
+{
+    display: flex;
+    margin-top: 10px;
+    border-bottom: none;
+}
+.del
+{
+    color: white;
+    float: left;
+    border-radius: 15px 0 0 15px;
+    background: rgb(214, 14, 14);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    transition: .6s;
+    border: none;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+
+}
+.del:hover
+{
+    cursor: pointer;
+    transform: rotateX(360deg);
+}
+.add
+{
+    background: rgb(7, 184, 101);
+    color: white;
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 45px;
+    margin-left: 10px;
+    border-radius: 0 0 15px;
+    border: none;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+    transition: .6s;
+}
+.add:hover
+{
+    cursor: pointer;
+    transform: rotateX(360deg);
+}
+

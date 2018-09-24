@@ -23,7 +23,11 @@
     <h1 ><?php echo $nomeDaMateria ?></h1>
     <section>
         <ul>
-            <button >+</button>
+            <div class="crud">
+                <form action="" method="GET" id="teste"></form>
+                <button onclick="" class="del">x</button>
+                <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="teste">+</button>
+            </div>
             <?php 
                 $query = mysqli_query($conectar, "SELECT * FROM TB_PERGUNTAS WHERE DisciplinasID = {$idDaMateria}");
                 $contar = 0;        
