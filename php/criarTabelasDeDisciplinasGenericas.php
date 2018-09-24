@@ -26,6 +26,13 @@
             } else {
             x.style.display = 'none';
             }
+
+            function inserirDisciplina() {
+            var x = prompt("Digite a sua pergunta:", "");
+            if (x != null) { 
+                document.getElementById("btn").value = x;
+                }
+            }      
         }
         </script>
 </head>
@@ -34,7 +41,7 @@
     <section>
         <ul>
             <div class="crud">
-                <form action="#" method="GET" id="teste"></form>
+                <form action="inserirPerguntas.php" method="GET" id="teste"></form>
                 <button onclick="" class="del">x</button>
                 <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="teste">+</button>
             </div>
