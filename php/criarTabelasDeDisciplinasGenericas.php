@@ -2,20 +2,12 @@
     
     include "conexaoComOMySql.php";
 
-    if(isset($_GET["mat"])){
+    if(isset($_GET["mat"]) && isset($_GET["id"])){
          $nomeDaMateria = $_GET["mat"];
+         $idDaMateria= $_GET["id"];
     }else{
         echo "Erro inesperado ocorreu";
     }    
-
-    $query = "CREATE TABLE `aplicacao_web_UNA`.`TB_{$nomeDaMateria}` ( `Qual a sua dúvida ?` TEXT CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL ) ENGINE = InnoDB;";
-    mysqli_query($conectar, $query);
-
-    $query = "INSERT INTO `TB_{$nomeDaMateria}`(`Qual a sua dúvida ?`) VALUES('Dessa forma você consegue criar tópicos para começar 
-                                                                            discussões sobre a sua dúvida, coloque a pergunta no 
-                                                                            titulo e com o tempo outros alunos vão respondendo
-                                                                             e ajudando')";
-    mysqli_query($conectar, $query);
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +25,10 @@
         <ul>
             <button >+</button>
             <?php 
-                $query = mysqli_query($conectar, "SHOW COLUMNS FROM `TB_{$nomeDaMateria}`");
+                $query = mysqli_query($conectar, "SELECT * FROM TB_PERGUNTAS WHERE DisciplinasID = {$idDaMateria}");
                 $contar = 0;        
-                while($row=mysqli_fetch_assoc($query)){
-                    $nomeDaColuna = $row['Field'];
-                    
+                while($perguntas=mysqli_fetch_assoc($query)){ 
+                    //variavel usada com o javascript                  
                     $contar = $contar + 1;
                     //Pra cada coluna da tabela, está sendo criado um js com metodo de esconder os valores 
                     echo "
@@ -54,12 +45,15 @@
 
                     echo "<li>
                             <div>
-                                <h2 onclick='escondeEsconde{$contar}()'> {$nomeDaColuna}</h2>            
-                                <ul id='respostas{$contar}' style='display: none;'>
-                                    <li>" +
-                                        mysqli_query($conectar, "SELECT `{$nomeDaColuna}` FROM `TB_{$nomeDaMateria}`");
-                                    + "</li>
-                                    <li>
+                                <h2 onclick='escondeEsconde{$contar}()'> {$perguntas['Perguntas']}</h2>            
+                                <ul id='respostas{$contar}' style='display: none;'>";
+
+                                    $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
+                                    while($respostas=mysqli_fetch_assoc($querys)){ 
+                                        echo  "<li>{$respostas['Respostas']}</li>";
+                                    }
+
+                    echo                "<li>
                                             <form>
                                                 <input type='text' />
                                                 <input type='submit' value='enviar' />

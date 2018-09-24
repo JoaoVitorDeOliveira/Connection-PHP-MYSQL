@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 19/09/2018 às 05:22
+-- Tempo de geração: 24/09/2018 às 04:18
 -- Versão do servidor: 10.1.30-MariaDB
 -- Versão do PHP: 7.2.1
 
@@ -49,7 +49,7 @@ INSERT INTO `TB_CADASTRO_ALUNOS` (`RA`, `NOME`, `SENHA`) VALUES
 --
 
 CREATE TABLE `TB_DISCIPLINAS` (
-  `ID` int(10) NOT NULL,
+  `DisciplinasID` int(10) NOT NULL,
   `Disciplinas` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -57,7 +57,7 @@ CREATE TABLE `TB_DISCIPLINAS` (
 -- Fazendo dump de dados para tabela `TB_DISCIPLINAS`
 --
 
-INSERT INTO `TB_DISCIPLINAS` (`ID`, `Disciplinas`) VALUES
+INSERT INTO `TB_DISCIPLINAS` (`DisciplinasID`, `Disciplinas`) VALUES
 (1, 'CÃ¡lculo Integral'),
 (2, 'Fisica Mecanica'),
 (3, 'Fisica Termodinamica'),
@@ -69,7 +69,57 @@ INSERT INTO `TB_DISCIPLINAS` (`ID`, `Disciplinas`) VALUES
 (9, 'Estatistica e Probabilidade'),
 (10, 'G.A.A.L'),
 (11, 'P.O.O'),
-(12, 'Fenômenos de Transporte');
+(12, 'Fenômenos de Transporte'),
+(13, 'TESTE'),
+(14, 'noJavascrpit');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `TB_PERGUNTAS`
+--
+
+CREATE TABLE `TB_PERGUNTAS` (
+  `PerguntasID` int(11) NOT NULL,
+  `DisciplinasID` int(11) NOT NULL,
+  `AlunoID` int(11) NOT NULL,
+  `Perguntas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `TB_PERGUNTAS`
+--
+
+INSERT INTO `TB_PERGUNTAS` (`PerguntasID`, `DisciplinasID`, `AlunoID`, `Perguntas`) VALUES
+(1, 5, 0, 'Qual a derivada de 2x + 3'),
+(2, 5, 0, 'O que é derivar ?'),
+(3, 5, 0, 'Regra do produto é pra derivada ?'),
+(4, 11, 0, 'O que é uma classe ?'),
+(5, 11, 0, 'O que é um objeto ?'),
+(6, 4, 0, 'O que são eletrons ?');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `TB_RESPOSTAS`
+--
+
+CREATE TABLE `TB_RESPOSTAS` (
+  `RespostasID` int(11) NOT NULL,
+  `PerguntasID` int(11) NOT NULL,
+  `AlunoID` int(11) NOT NULL,
+  `Respostas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `TB_RESPOSTAS`
+--
+
+INSERT INTO `TB_RESPOSTAS` (`RespostasID`, `PerguntasID`, `AlunoID`, `Respostas`) VALUES
+(1, 1, 0, 'O resultado da 2'),
+(2, 1, 0, 'Tem certeza ?'),
+(3, 1, 0, 'Siim!!'),
+(4, 3, 0, 'Siim!!');
 
 --
 -- Índices de tabelas apagadas
@@ -85,7 +135,21 @@ ALTER TABLE `TB_CADASTRO_ALUNOS`
 -- Índices de tabela `TB_DISCIPLINAS`
 --
 ALTER TABLE `TB_DISCIPLINAS`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`DisciplinasID`);
+
+--
+-- Índices de tabela `TB_PERGUNTAS`
+--
+ALTER TABLE `TB_PERGUNTAS`
+  ADD PRIMARY KEY (`PerguntasID`),
+  ADD KEY `DisciplinasID` (`DisciplinasID`);
+
+--
+-- Índices de tabela `TB_RESPOSTAS`
+--
+ALTER TABLE `TB_RESPOSTAS`
+  ADD PRIMARY KEY (`RespostasID`),
+  ADD KEY `PerguntasID` (`PerguntasID`);
 
 --
 -- AUTO_INCREMENT de tabelas apagadas
@@ -95,7 +159,35 @@ ALTER TABLE `TB_DISCIPLINAS`
 -- AUTO_INCREMENT de tabela `TB_DISCIPLINAS`
 --
 ALTER TABLE `TB_DISCIPLINAS`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `DisciplinasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de tabela `TB_PERGUNTAS`
+--
+ALTER TABLE `TB_PERGUNTAS`
+  MODIFY `PerguntasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `TB_RESPOSTAS`
+--
+ALTER TABLE `TB_RESPOSTAS`
+  MODIFY `RespostasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restrições para dumps de tabelas
+--
+
+--
+-- Restrições para tabelas `TB_PERGUNTAS`
+--
+ALTER TABLE `TB_PERGUNTAS`
+  ADD CONSTRAINT `TB_PERGUNTAS_ibfk_1` FOREIGN KEY (`DisciplinasID`) REFERENCES `TB_DISCIPLINAS` (`DisciplinasID`);
+
+--
+-- Restrições para tabelas `TB_RESPOSTAS`
+--
+ALTER TABLE `TB_RESPOSTAS`
+  ADD CONSTRAINT `TB_RESPOSTAS_ibfk_1` FOREIGN KEY (`PerguntasID`) REFERENCES `TB_PERGUNTAS` (`PerguntasID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -32,12 +32,13 @@
         </div>
 		<?php 
             //Preenchendo a tabela com os dados
-            $query = mysqli_query($conectar, "SELECT `Disciplinas` FROM TB_DISCIPLINAS");
+            $query = mysqli_query($conectar, "SELECT * FROM TB_DISCIPLINAS");
 
             while ($i = mysqli_fetch_assoc($query)) { 
 
             echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
                     <input type='submit' name='mat' value='{$i['Disciplinas']}'>
+                    <input name='id' value='{$i['DisciplinasID']}' style='display: none;'>
                     </form></h2></div></li>";	
             }
 
