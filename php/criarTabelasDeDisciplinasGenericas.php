@@ -49,7 +49,6 @@
                 <form action="inserirPerguntas.php"method="GET" id="teste">
                     <input type='hidden' name='id' value='<?php echo $idDaMateria;?>'/>
                 </form>
-                <button onclick="" class="del">x</button>
                 <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
             </div>
             <li>
@@ -88,8 +87,8 @@
 
                 echo   "<li>
                             <div>
-                                
-                                <h2 onclick='escondeEsconde{$contar}()'> {$perguntas['Perguntas']}</h2>            
+                                <button onclick='' class='del'>x</button>
+                                <h2 onclick='escondeEsconde{$contar}()'>{$perguntas['Perguntas']}</h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
 
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            

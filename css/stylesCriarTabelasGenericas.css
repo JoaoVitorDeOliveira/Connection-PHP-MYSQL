@@ -79,21 +79,17 @@ input[type="submit"]
 .del
 {
     color: white;
-    float: left;
-    border-radius: 15px 0 0 15px;
+    float: right;
     background: rgb(214, 14, 14);
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
-    transition: .6s;
     border: none;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
 
 }
 .del:hover
 {
     cursor: pointer;
-    transform: rotateX(360deg);
 }
 .add
 {
@@ -103,10 +99,9 @@ input[type="submit"]
     text-align: center;
     font-weight: bold;
     font-size: 45px;
-    margin-left: 10px;
-    border-radius: 0 0 15px;
+    border-radius: 15px 0 15px;
     border: none;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, .6);
     transition: .6s;
 }
 .add:hover
