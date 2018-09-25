@@ -39,6 +39,8 @@
                 document.getElementById("btn").value = i;
                 }
             }
+            
+
         </script>
 </head>
 <body>
@@ -83,11 +85,17 @@
                         x.style.display = 'none';
                         }
                     }
+
+                        function testaExclusao{$contar}(){
+                            alert('Atenção: Perguntas já respondidas não serão deletadas');                        
+                        }
                     </script>";
 
                 echo   "<li>
                             <div>
-                                <button onclick='' class='del'>x</button>
+                                <form action='deletarPerguntas.php' method='GET'>
+                                    <button onclick='testaExclusao{$contar}()' name='delPerg' class='del' value='{$perguntas['PerguntasID']}'>x</button>
+                                </form>
                                 <h2 onclick='escondeEsconde{$contar}()'>{$perguntas['Perguntas']}</h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
 
