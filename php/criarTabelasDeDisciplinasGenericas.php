@@ -54,11 +54,11 @@
             </div>
             <li>
                 <div>
-                    <h2 onclick='escondeEsconde()'>Frase padrão entra aqui</h2>
+                    <h2 onclick='escondeEsconde()'>Como Funciona ?! Clique aqui e descubra !</h2>
                     <ul id='respostas' style='display: none;'>
-                        <li>Item da frase padrão</li>
-                        <li>Outro item padrão</li>
-                        <li>Mais um item padrão</li>
+                        <li>Ao clicar no botão verde vai aparecer um campo para que você possa escrever sua pergunta.</li>
+                        <li>Logo após, sua pergunta aparecerá e estará disponivel para qualquer um responder. </li>
+                        <li>Ao clicar nela todas as respostas até o momento irão aparecer e o campo para responder a pergunta também.</li>
                     </ul>
                 </div>
             </li>
@@ -69,14 +69,17 @@
                 while($perguntas=mysqli_fetch_assoc($query)){ 
                     //variavel usada com o javascript                  
                     $contar = $contar + 1;
+                    $contarResp = 0;
                     $idDaPergunta;
                     //Pra cada coluna da tabela, está sendo criado um js com metodo de esconder os valores 
                 echo "
                     <script >
                         function escondeEsconde{$contar}() {
                         var x = document.getElementById('respostas{$contar}');
+                        var y = document.getElementById('contadorDeResp{$contar}');
                         if (x.style.display === 'none') {
                         x.style.display = 'block';
+                        y.style.display = 'none';
                         } else {
                         x.style.display = 'none';
                         }
@@ -85,14 +88,15 @@
 
                 echo   "<li>
                             <div>
+                                
                                 <h2 onclick='escondeEsconde{$contar}()'> {$perguntas['Perguntas']}</h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
 
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
-                                    while($respostas=mysqli_fetch_assoc($querys)){ 
-                                        echo  "<li>{$respostas['Respostas']}</li>";
-                                    }
-
+                                    while($respostas=mysqli_fetch_assoc($querys)){
+                                        $contarResp = $contarResp + 1; 
+                                        echo  "<li >{$respostas['Respostas']}</li> ";
+                                    }                                    
                 echo               "<li>
                                         <form action='inserirRespostas.php' method='GET'>
                                             <textarea rows='4' cols='50' name='textarea'></textarea>
@@ -102,10 +106,13 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>";
+                        </li>
+                        <spam id='contadorDeResp{$contar}'>{$contarResp}</spam>";
                 }
+                
             ?>
         </ul>
+        
     </section>
 </body>
 </html>

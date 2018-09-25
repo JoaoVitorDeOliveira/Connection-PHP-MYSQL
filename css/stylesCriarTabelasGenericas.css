@@ -2,12 +2,12 @@ body
 {
     margin-left:20px;
     padding: 0;    
-    background: rgb(240, 2, 2);
+    background: rgb(248, 37, 37);
     font-family: sans-serif;
 }
 ul
 {
-    background: white;
+    background: rgb(250, 250, 250);
     border-radius: 20px;
     overflow: auto;
     padding-right: 45px;
@@ -21,34 +21,39 @@ h1
     box-shadow: 5px 5px  rgba(0, 0, 0, .6);
     border-radius: 0 0 20px 20px;
     font-weight: bold;
+    
 }
 h2
 {
     font-weight: bold;
+    background: rgb(90, 2, 141);
+    color: white;
+    padding: 20px;
 }
 h2:hover
 {
     cursor: pointer;
+    background: rgb(134, 3, 209);
 }
 div
 {
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px rgb(158, 158, 158);
 }
 li
 {
     position: relative;
     list-style: none;
-    border-radius: 15px;
     padding-bottom: 10px;
     margin: 0;
 }
 ul li ul li
 {
    padding: 20px;
-   font-size: 20px;
+   font-size: 18px;
    font-weight: bold;
-   border-bottom: 1px solid gray;
+   border: 1px solid gray;
    margin: 10px;
+   background: white;
 }
 
 input[type="submit"]
@@ -113,4 +118,28 @@ textarea
 {
     width: 100%;
 }
+ul li ul li:nth-child(odd)
+{
+    background: rgb(179, 178, 178);
+    color: white;
+}
+ul li ul li:nth-last-child()
+{
+    padding: 0;
+    border: none;
+}
+spam
+{
+    background: rgb(2, 187, 2);
+    border: 1 solid black;
+    border-radius: 100%;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    bottom: 110px;
+    right: 10px;
+    position: relative;
 
+}
