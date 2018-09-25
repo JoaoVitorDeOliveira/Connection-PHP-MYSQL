@@ -38,7 +38,7 @@
 
             echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
                     <input type='submit' name='mat' value='{$i['Disciplinas']}'>
-                    <input name='id' value='{$i['DisciplinasID']}' style='display: none;'>
+                    <input name='id' value='{$i['DisciplinasID']}' type='hidden'>
                     </form></h2></div></li>";	
             }
 

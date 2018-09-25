@@ -1,13 +1,18 @@
 <?php
     
+    session_start();
     include "conexaoComOMySql.php";
-
+    //pegando o nome da materia e a id dela
     if(isset($_GET["mat"]) && isset($_GET["id"])){
          $nomeDaMateria = $_GET["mat"];
          $idDaMateria= $_GET["id"];
+    //gravando o valor em variaveis globais 
+         $_SESSION['nomeDaMateria'] = $nomeDaMateria;
+         $_SESSION['idDaMateria'] =$idDaMateria;
     }else{
-        echo "Erro inesperado ocorreu";
-    }    
+        $nomeDaMateria = $_SESSION['nomeDaMateria'];
+        $idDaMateria = $_SESSION['idDaMateria'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +30,15 @@
             x.style.display = 'block';
             } else {
             x.style.display = 'none';
-            }
-
-            function inserirDisciplina() {
-            var x = prompt("Digite a sua pergunta:", "");
-            if (x != null) { 
-                document.getElementById("btn").value = x;
-                }
             }      
         }
+
+            function inserirPergunta() {
+            var i = prompt("Digite a sua pergunta:", "");
+            if (i != null) { 
+                document.getElementById("btn").value = i;
+                }
+            }
         </script>
 </head>
 <body>
@@ -41,9 +46,11 @@
     <section>
         <ul>
             <div class="crud">
-                <form action="inserirPerguntas.php" method="GET" id="teste"></form>
+                <form action="inserirPerguntas.php"method="GET" id="teste">
+                    <input type='hidden' name='id' value='<?php echo $idDaMateria;?>'/>
+                </form>
                 <button onclick="" class="del">x</button>
-                <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="teste">+</button>
+                <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
             </div>
             <li>
                 <div>
@@ -62,6 +69,7 @@
                 while($perguntas=mysqli_fetch_assoc($query)){ 
                     //variavel usada com o javascript                  
                     $contar = $contar + 1;
+                    $idDaPergunta;
                     //Pra cada coluna da tabela, está sendo criado um js com metodo de esconder os valores 
                 echo "
                     <script >
@@ -86,8 +94,9 @@
                                     }
 
                 echo               "<li>
-                                        <form>
-                                            <input type='text' />
+                                        <form action='inserirRespostas.php' method='GET'>
+                                            <textarea rows='4' cols='50' name='textarea'></textarea>
+                                            <input type='hidden' name='pergID' value='{$perguntas['PerguntasID']}'/>
                                             <input type='submit' value='enviar' />
                                         </form>
                                     </li>
