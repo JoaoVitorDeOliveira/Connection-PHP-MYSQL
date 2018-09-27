@@ -44,7 +44,9 @@
         </script>
 </head>
 <body>
+    <button class="voltar">voltar</button>
     <h1 ><?php echo $nomeDaMateria ?></h1>
+
     <section>
         <ul>
             <div class="crud">
