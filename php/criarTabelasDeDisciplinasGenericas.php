@@ -39,12 +39,16 @@
                 document.getElementById("btn").value = i;
                 }
             }
+
+            function voltarDisciplinas(){
+                javascript:window.location='disciplinasTelaPrincipal.php';
+            }
             
 
         </script>
 </head>
 <body>
-    <button class="voltar">voltar</button>
+    <button class="voltar" onclick='voltarDisciplinas()'>voltar</button>
     <h1 ><?php echo $nomeDaMateria ?></h1>
 
     <section>
@@ -110,7 +114,7 @@
                                         <form action='inserirRespostas.php' method='GET'>
                                             <textarea rows='4' cols='50' name='textarea'></textarea>
                                             <input type='hidden' name='pergID' value='{$perguntas['PerguntasID']}'/>
-                                            <input type='submit' value='enviar' />
+                                            <input class='btn_enviarResposta' type='submit' value='enviar' />
                                         </form>
                                     </li>
                                 </ul>

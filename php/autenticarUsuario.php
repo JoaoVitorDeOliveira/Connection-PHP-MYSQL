@@ -9,7 +9,8 @@
 
     while ($i = mysqli_fetch_assoc($query)) { 
         if($i['RA'] == $ra && $i['SENHA'] == $senha){
-            header("Location: disciplinasTelaPrincipal.php");
+            $nome = $i['NOME'];
+            header("Location: disciplinasTelaPrincipal.php?ra={$ra}&nome={$nome}");
             exit;
         }
     }

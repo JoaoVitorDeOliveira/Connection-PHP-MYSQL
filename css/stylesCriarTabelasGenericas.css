@@ -2,7 +2,7 @@ body
 {
     margin-left:20px;
     padding: 0;    
-    background: rgb(95, 62, 243);
+    background: rgb(28, 6, 124);
     font-family: sans-serif;
 }
 ul
@@ -18,9 +18,9 @@ h1
     color: rgb(255, 255, 255);
     padding: 10px;
     text-align: center;
-
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 20px 20px 20px;
     font-weight: bold;
+    background: rgb(119, 53, 241);
     
 }
 h2
@@ -56,7 +56,7 @@ ul li ul li
    background: white;
 }
 
-input[type="submit"]
+.btn_enviarResposta
 {
     float: right;
     width: 70px;
@@ -68,6 +68,11 @@ input[type="submit"]
     background: rgb(7, 184, 101);
     color: white;
     font-weight: bold;
+}
+.btn_enviarResposta:hover
+{
+    background: rgb(9, 230, 127);
+    cursor: pointer;
 }
 .crud
 {
@@ -84,12 +89,15 @@ input[type="submit"]
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
     border: none;
+    margin-right: 5px;
 
 }
 .del:hover
 {
     cursor: pointer;
+    background: rgb(255, 0, 0)
 }
 .add
 {
@@ -101,7 +109,7 @@ input[type="submit"]
     font-size: 45px;
     border-radius: 15px 0 15px;
     border: none;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, .6);
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
     transition: .6s;
 }
 .add:hover
@@ -113,7 +121,7 @@ textarea
 {
     width: 100%;
 }
-ul li ul li:nth-child(odd)
+ul li ul li:nth-child(even)
 {
     background: rgb(179, 178, 178);
     color: white;
@@ -136,12 +144,22 @@ spam
     bottom: 110px;
     right: 10px;
     position: relative;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
 
 }
 .voltar
 {
     float: right;
-    padding: 10px; 
+    padding-right: 20px;
+    padding-left: 20px; 
     margin-left: 10px; 
-    height: 60px;
+    height: 57px;
+    border-radius: 0 20px 20px 0 ;
+    border: none;
+    font-weight: bold;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+}
+.voltar:hover
+{
+    cursor: pointer;
 }

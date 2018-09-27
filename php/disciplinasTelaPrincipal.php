@@ -1,4 +1,17 @@
-<?php include "conexaoComOMySql.php" ?>	
+<?php 
+    session_start();
+    include "conexaoComOMySql.php";
+    if(isset($_REQUEST['nome']) && isset($_REQUEST['ra'])){ 
+        $nome = $_REQUEST['nome'];
+        $ra = $_REQUEST['ra'];
+
+        $_SESSION['nomeDoAluno'] = $nome;
+        $_SESSION['raDoAluno'] = $ra;
+    }else{
+        $nome = $_SESSION['nomeDoAluno'];
+        $ra = $_SESSION['raDoAluno'];
+    }
+?>	
 
 <html>
 <head>
@@ -19,8 +32,8 @@
 <body>
 
     <div class="info">
-            João Vitor de Oliveira </br></br>
-            317113712
+            <?php echo $nome ?> </br></br>
+            <?php echo $ra ?>
     </div>
     <h1>Disciplinas</h1>
     <div class="box">
