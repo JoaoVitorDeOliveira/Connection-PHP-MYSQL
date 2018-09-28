@@ -101,14 +101,20 @@
                             <div>
                                 <form action='deletarPerguntas.php' method='GET'>
                                     <button onclick='testaExclusao{$contar}()' name='delPerg' class='del' value='{$perguntas['PerguntasID']}'>x</button>
-                                </form>
-                                <h2 onclick='escondeEsconde{$contar}()'>{$perguntas['Perguntas']}</h2>            
+                                </form>                                
+                                <h2 onclick='escondeEsconde{$contar}()'>
+                                        <div class='nomeDaPessoaQuePerguntou'>{$perguntas['NomesAlunos']} perguntou: </div>
+                                        {$perguntas['Perguntas']}                                        
+                                </h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
 
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
                                     while($respostas=mysqli_fetch_assoc($querys)){
                                         $contarResp = $contarResp + 1; 
-                                        echo  "<li >{$respostas['Respostas']}</li> ";
+                                        echo  "<li >
+                                                <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
+                                                {$respostas['Respostas']}
+                                            </li> ";
                                     }                                    
                 echo               "<li>
                                         <form action='inserirRespostas.php' method='GET'>

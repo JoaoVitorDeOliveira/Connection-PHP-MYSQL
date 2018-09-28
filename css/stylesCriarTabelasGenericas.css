@@ -141,7 +141,7 @@ spam
     padding-left: 15px;
     padding-right: 15px;
     font-weight: bold;
-    bottom: 110px;
+    bottom: 120px;
     right: 10px;
     position: relative;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
@@ -162,4 +162,11 @@ spam
 .voltar:hover
 {
     cursor: pointer;
+}
+.nomeDaPessoaQuePerguntou
+{
+    padding: 3px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 11px;
 }
