@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Set-2018 às 21:13
+-- Generation Time: 01-Out-2018 às 20:46
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -40,6 +40,8 @@ CREATE TABLE `tb_cadastro_alunos` (
 
 INSERT INTO `tb_cadastro_alunos` (`RA`, `NOME`, `SENHA`) VALUES
 (317113712, 'Joao Vitor de Oliveira', 'oliveira'),
+(317113713, 'Maria Clara', '123'),
+(317113714, 'Marcus Augusto', '1234'),
 (3476584832, 'PEDRO', '123'),
 (3476584834, 'MARIA', '987');
 
@@ -80,7 +82,6 @@ INSERT INTO `tb_disciplinas` (`DisciplinasID`, `Disciplinas`) VALUES
 CREATE TABLE `tb_perguntas` (
   `PerguntasID` int(11) NOT NULL,
   `DisciplinasID` int(11) NOT NULL,
-  `AlunoID` int(11) NOT NULL,
   `Perguntas` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `NomesAlunos` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,15 +90,16 @@ CREATE TABLE `tb_perguntas` (
 -- Extraindo dados da tabela `tb_perguntas`
 --
 
-INSERT INTO `tb_perguntas` (`PerguntasID`, `DisciplinasID`, `AlunoID`, `Perguntas`, `NomesAlunos`) VALUES
-(1, 5, 0, 'Qual a derivada de 2x + 3', ''),
-(3, 5, 0, 'Regra do produto eh pra derivada ?', ''),
-(4, 11, 0, 'O que é uma classe ?', ''),
-(5, 11, 0, 'O que é um objeto ?', ''),
-(6, 4, 0, 'O que são eletrons ?', ''),
-(7, 5, 0, 'nova pergunta pa', ''),
-(9, 5, 0, 'teste', ''),
-(10, 5, 0, 'testando meu nome', 'Joao Vitor de Oliveira');
+INSERT INTO `tb_perguntas` (`PerguntasID`, `DisciplinasID`, `Perguntas`, `NomesAlunos`) VALUES
+(1, 5, 'Qual a derivada de 2x + 3', ''),
+(3, 5, 'Regra do produto eh pra derivada ?', ''),
+(4, 11, 'O que é uma classe ?', ''),
+(5, 11, 'O que é um objeto ?', ''),
+(6, 4, 'O que são eletrons ?', ''),
+(11, 5, 'Qual a Derivada de 3x + 2 ?', 'Joao Vitor de Oliveira'),
+(12, 1, 'O que Ã© integrar ?', 'PEDRO'),
+(13, 8, 'Como faz transformada em Z ?', 'Maria Clara'),
+(14, 5, 'AlguÃ©m tem o link de um livro de CÃ¡lculo ?', 'Maria Clara');
 
 -- --------------------------------------------------------
 
@@ -108,21 +110,35 @@ INSERT INTO `tb_perguntas` (`PerguntasID`, `DisciplinasID`, `AlunoID`, `Pergunta
 CREATE TABLE `tb_respostas` (
   `RespostasID` int(11) NOT NULL,
   `PerguntasID` int(11) NOT NULL,
-  `AlunoID` int(11) NOT NULL,
-  `Respostas` text NOT NULL
+  `Respostas` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `NomesAlunos` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tb_respostas`
 --
 
-INSERT INTO `tb_respostas` (`RespostasID`, `PerguntasID`, `AlunoID`, `Respostas`) VALUES
-(1, 1, 0, 'O resultado da 2'),
-(2, 1, 0, 'Tem certeza ?'),
-(3, 1, 0, 'Siim!!'),
-(4, 3, 0, 'Siim!!'),
-(5, 7, 0, 'uauu'),
-(6, 9, 0, 'ueuuue');
+INSERT INTO `tb_respostas` (`RespostasID`, `PerguntasID`, `Respostas`, `NomesAlunos`) VALUES
+(1, 1, 'O resultado da 2', ''),
+(2, 1, 'Tem certeza ?', ''),
+(3, 1, 'Siim!!', ''),
+(4, 3, 'Siim!!', ''),
+(7, 1, 'Ta certo!', ''),
+(8, 1, 'ta nÃ£o', 'Joao Vitor de Oliveira'),
+(9, 1, 'vcs nÃ£o sabem de nada', 'PEDRO'),
+(10, 12, 'Ã© tipo derivar sÃ³ que contrario', 'Joao Vitor de Oliveira'),
+(11, 11, 'o resultado Ã© 3', 'Maria Clara'),
+(12, 11, 'ta certo ?', 'Marcus Augusto'),
+(13, 12, 'faz sentido', 'Maria Clara'),
+(14, 13, 'sÃ³ sei Laplace... :(', 'Marcus Augusto'),
+(15, 13, 'e como que faz Laplace ?', 'Joao Vitor de Oliveira'),
+(16, 13, 'https://www.todamateria.com.br/teorema-de-laplace/', 'Marcus Augusto'),
+(17, 13, 'Valeu!!', 'Joao Vitor de Oliveira'),
+(18, 13, 'mas e a transformada em Z gente ?!?!', 'Maria Clara'),
+(19, 5, 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-istoedinheiro-ssl.akamaized.net%2Fwp-content%2Fuploads%2Fsites%2F17%2F2018%2F02%2Fpalio.jpg&imgrefurl=https%3A%2F%2Fwww.istoedinheiro.com.br%2Fcarro-barato-sai-do-foco-e-fiat-aposenta-o-palio%2F&docid=P8jmWe01pS2QiM&tbnid=BH-O6LydDB47FM%3A&vet=10ahUKEwjerYu14OXdAhUKkJAKHa7MDF0QMwgmKAEwAQ..i&w=1024&h=576&client=firefox-b-ab&bih=574&biw=1268&q=carro&ved=0ahUKEwjerYu14OXdAhUKkJAKHa7MDF0QMwgmKAEwAQ&iact=mrc&uact=8', 'Maria Clara'),
+(20, 14, 'http://una.bv3.digitalpages.com.br/users/publications/9788543005423/pages/-12', 'Joao Vitor de Oliveira'),
+(21, 14, 'Na biblioteca da Una tem esse', 'Joao Vitor de Oliveira'),
+(22, 11, 'sim, valeu!!', 'Joao Vitor de Oliveira');
 
 --
 -- Indexes for dumped tables
@@ -162,19 +178,19 @@ ALTER TABLE `tb_respostas`
 -- AUTO_INCREMENT for table `tb_disciplinas`
 --
 ALTER TABLE `tb_disciplinas`
-  MODIFY `DisciplinasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `DisciplinasID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_perguntas`
 --
 ALTER TABLE `tb_perguntas`
-  MODIFY `PerguntasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `PerguntasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_respostas`
 --
 ALTER TABLE `tb_respostas`
-  MODIFY `RespostasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `RespostasID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
