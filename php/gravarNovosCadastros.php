@@ -14,7 +14,7 @@
 	    if(isset($_POST["btn_enviar"])){
         $res = mysqli_query($conectar, $cos);
         echo "Enviado com Sucesso";
-        header("location:disciplinasTelaPrincipal.php");
+        header("location:../html/telaDeLogin.html");
     }
 
 ?>

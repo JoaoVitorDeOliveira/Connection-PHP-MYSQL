@@ -29,13 +29,17 @@
         }   
 
         function deletaDisciplina(){
-            alert("ATENÇão: Disciplinas com perguntas não serão excluidas");
+            confirm("ATENÇão: Disciplinas com perguntas não serão excluidas");
+        }
+
+        function voltaTelaDeLogin(){
+            window.location.href="../html/telaDeLogin.html";            
         }
     </script>
 </head>
 <body>
 
-    <button class="info" onclick="">
+    <button class="info" onclick="voltaTelaDeLogin()">
             <?php echo $nome ?> </br></br>
             <?php echo $ra ?>
     </button>
