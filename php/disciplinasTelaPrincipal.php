@@ -27,32 +27,40 @@
                 document.getElementById("btn").value = x;
             }
         }   
+
+        function deletaDisciplina(){
+            alert("ATENÇão: Disciplinas com perguntas não serão excluidas");
+        }
     </script>
 </head>
 <body>
 
-    <div class="info">
+    <button class="info" onclick="">
             <?php echo $nome ?> </br></br>
             <?php echo $ra ?>
-    </div>
+    </button>
     <h1>Disciplinas</h1>
     <div class="box">
     <ul>
         <div class="crud">
-            <form action="inserirDisciplina.php" method="GET" id="teste"></form>
-            <button onclick="" class="del">x</button>
-            <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="teste">+</button>
+            <form action="inserirDisciplina.php" method="GET" id="insert"></form>
+            <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="insert">+</button>
         </div>
 		<?php 
             //Preenchendo a tabela com os dados
-            $query = mysqli_query($conectar, "SELECT * FROM TB_DISCIPLINAS");
+            $query = mysqli_query($conectar, "SELECT * FROM TB_DISCIPLINAS ORDER BY `DisciplinasID` DESC");
 
             while ($i = mysqli_fetch_assoc($query)) { 
 
             echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
+                    <button onclick='deletaDisciplina()' class='del' form='delete'>x</button>
                     <input type='submit' name='mat' value='{$i['Disciplinas']}'>
                     <input name='id' value='{$i['DisciplinasID']}' type='hidden'>
                     </form></h2></div></li>";	
+
+            echo "<form action='deletaDisciplina.php' method='GET' id='delete'>
+                    <input name='delete' value='{$i['DisciplinasID']}' type='hidden'>        
+                  </form>";        
             }
 
 		?>

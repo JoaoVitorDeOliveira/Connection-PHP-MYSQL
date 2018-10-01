@@ -14,9 +14,7 @@
 	    if(isset($_POST["btn_enviar"])){
         $res = mysqli_query($conectar, $cos);
         echo "Enviado com Sucesso";
-        exit;
+        header("location:disciplinasTelaPrincipal.php");
     }
-   
-    mysqli_close($conectar);
 
 ?>

@@ -71,7 +71,7 @@
             </li>
 
             <?php 
-                $query = mysqli_query($conectar, "SELECT * FROM TB_PERGUNTAS WHERE DisciplinasID = {$idDaMateria}");
+                $query = mysqli_query($conectar, "SELECT * FROM TB_PERGUNTAS WHERE DisciplinasID = {$idDaMateria} ORDER BY `PerguntasID` DESC");
                 $contar = 0;        
                 while($perguntas=mysqli_fetch_assoc($query)){ 
                     //variavel usada com o javascript                  

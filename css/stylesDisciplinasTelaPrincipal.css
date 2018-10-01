@@ -80,6 +80,7 @@ input:hover
     border-radius: 0px 0px 20px 20px;
     transition: .3s;
     text-align: center;
+    border: none;
 }
 .info:hover
 {
@@ -93,22 +94,23 @@ input:hover
 }
 .del
 {
+    position: relative;
     color: white;
-    float: left;
-    border-radius: 15px 0 0 15px;
+    bottom: 20px;
+    float: right;
+    border-radius: 0 15px 0 0;
     background: rgb(214, 14, 14);
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
-    transition: .6s;
     border: none;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
+
 
 }
 .del:hover
 {
     cursor: pointer;
-    transform: rotateX(360deg);
+    background: rgb(255, 5, 5);
 }
 .add
 {
