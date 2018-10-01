@@ -43,7 +43,6 @@
             function voltarDisciplinas(){
                 javascript:window.location='disciplinasTelaPrincipal.php';
             }
-            
 
         </script>
 </head>
@@ -107,14 +106,23 @@
                                         {$perguntas['Perguntas']}                                        
                                 </h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
-
+                                    //Seleciona as respostas sobre a pergunta
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
                                     while($respostas=mysqli_fetch_assoc($querys)){
-                                        $contarResp = $contarResp + 1; 
+                                        $contarResp = $contarResp + 1;
+                                        //verifica se é link ou não a resposta
+                                        if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
+                                        echo  "<li >
+                                                <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
+                                                <a href='{$respostas['Respostas']}'>{$respostas['Respostas']}</a>
+                                            </li> ";
+                                        }
+                                        else{
                                         echo  "<li >
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
                                                 {$respostas['Respostas']}
                                             </li> ";
+                                        }    
                                     }                                    
                 echo               "<li>
                                         <form action='inserirRespostas.php' method='GET'>
