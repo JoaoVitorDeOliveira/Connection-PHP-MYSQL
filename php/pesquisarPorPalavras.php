@@ -32,7 +32,7 @@
 			<?php 
 					//Preenchendo a tabela com os dados
 					while ($i = mysqli_fetch_assoc($pesq)) { 
-					echo "<tr><td> {$i['Respostas']} </td>".
+					echo "<tr><td> <a href='http://localhost/connection-PHP-MYSQL/php/criarTabelasDeDisciplinasGenericas.php?mat={$i['Disciplinas']}&id={$idDaMateria}'> {$i['Respostas']} </a></td>".
 						 "<td> {$i['Perguntas']} </td>".
 						 "<td> {$i['Disciplinas']} </td></tr>";
 				}

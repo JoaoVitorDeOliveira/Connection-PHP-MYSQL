@@ -88,10 +88,6 @@ input:hover
     cursor: pointer;
     transition: .3s;
 }
-.crud
-{
-    display: flex;
-}
 .del
 {
     position: relative;
