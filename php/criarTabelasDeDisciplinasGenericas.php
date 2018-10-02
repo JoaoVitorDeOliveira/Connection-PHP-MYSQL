@@ -22,7 +22,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesCriarTabelasGenericas.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesCriarTabelasGenericas.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
         <script>
             function escondeEsconde() {
             var x = document.getElementById('respostas');
@@ -47,7 +48,7 @@
         </script>
 </head>
 <body>
-    <button class="voltar" onclick='voltarDisciplinas()'>voltar</button>
+    <button id="voltar" class="fas fa-arrow-left" style="font-size:20px;"onclick='voltarDisciplinas()'></button>
     <h1 ><?php echo $nomeDaMateria ?></h1>
 
     <section>
@@ -57,6 +58,10 @@
                     <input type='hidden' name='id' value='<?php echo $idDaMateria;?>'/>
                 </form>
                 <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
+                <form>
+                    <input type='text' class='pesquisa'/>
+                </form>
+                <i id='lupa' class="fas fa-search"></i>
             </div>
             <li>
                 <div>
@@ -113,12 +118,14 @@
                                         //verifica se é link ou não a resposta
                                         if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
                                         echo  "<li >
+                                                <i onclick='inserirPergunta()' class='fas fa-pencil-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
                                                 <a href='{$respostas['Respostas']}'>{$respostas['Respostas']}</a>
                                             </li> ";
                                         }
                                         else{
                                         echo  "<li >
+                                                <i onclick='inserirPergunta()' class='fas fa-pencil-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
                                                 {$respostas['Respostas']}
                                             </li> ";
