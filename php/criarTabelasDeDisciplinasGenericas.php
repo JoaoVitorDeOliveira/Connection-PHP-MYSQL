@@ -54,14 +54,15 @@
     <section>
         <ul>
             <div class="crud">
-                <form action="inserirPerguntas.php"method="GET" id="teste">
+                <form action="inserirPerguntas.php" method="GET" id="teste">
                     <input type='hidden' name='id' value='<?php echo $idDaMateria;?>'/>
                 </form>
                 <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
-                <form>
-                    <input type='text' class='pesquisa'/>
-                </form>
-                <i id='lupa' class="fas fa-search"></i>
+                <form action="pesquisarPorPalavras.php" method="GET" id='pesquisa'>
+                    <input type='text' name='pesq' class='pesquisa'/>
+                    <i id='lupa' class="fas fa-search" form='pesquisa'></i>
+                </form >
+                
             </div>
             <li>
                 <div>

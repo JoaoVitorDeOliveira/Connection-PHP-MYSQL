@@ -1,0 +1,39 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+.container
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+table, th, td
+{
+    border: 2px solid gray;
+    border-collapse: collapse;
+}
+td
+{
+    padding: 10px;
+}
+tr:nth-child(even)
+{
+    background: lightgray;
+    color: white;
+}
+td:last-child
+{
+    text-align: center;
+}
+.btn_voltar
+{
+    display: block;
+    color: white;
+    margin-top: 40px;
+    padding: 10px;
+    background: rgb(49, 2, 136);
+    border-radius: 10px;
+}
