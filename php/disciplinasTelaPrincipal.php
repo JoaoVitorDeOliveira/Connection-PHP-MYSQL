@@ -20,6 +20,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesDisciplinasTelaPrincipal.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
     <script>
         function inserirDisciplina() {
             var x = prompt("Digite o nome da matéria:", "");
@@ -48,8 +49,11 @@
     <ul>
         <div class="crud">
             <form action="inserirDisciplina.php" method="GET" id="insert"></form>
-            <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="insert">+</button>
+            <button id="btn" name="mat" onclick="inserirDisciplina()" class="add" form="insert">+</button>            
+            <input type='text' name='pesq' class='pesquisa' form="pesq"/>
         </div>
+            <form action="pesquisarDisciplinasTelaPrincipal.php" method="GET" id="pesq"></form>
+            <i id='lupa' class="fas fa-search" form='pesquisa'></i>
 		<?php 
             //Preenchendo a tabela com os dados
             $query = mysqli_query($conectar, "SELECT * FROM TB_DISCIPLINAS ORDER BY `DisciplinasID` DESC");
@@ -58,7 +62,7 @@
 
             echo "<li><div><h2><form action='criarTabelasDeDisciplinasGenericas.php' method='GET'>
                     <button onclick='deletaDisciplina()' class='del' form='delete'>x</button>
-                    <input type='submit' name='mat' value='{$i['Disciplinas']}'>
+                    <input class='disciplinas' type='submit' name='mat' value='{$i['Disciplinas']}'>
                     <input name='id' value='{$i['DisciplinasID']}' type='hidden'>
                     </form></h2></div></li>";	
 

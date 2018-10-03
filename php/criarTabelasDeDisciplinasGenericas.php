@@ -59,9 +59,9 @@
                 </form>
                 <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
                 <form action="pesquisarPorPalavras.php" method="GET" id='pesquisa'>
-                    <input type='text' name='pesq' class='pesquisa'/>
-                    <i id='lupa' class="fas fa-search" form='pesquisa'></i>
+                    <input type='text' name='pesq' class='pesquisa'/>                    
                 </form >
+                <i id='lupa' class="fas fa-search" form='pesquisa'></i>
                 
             </div>
             <li>

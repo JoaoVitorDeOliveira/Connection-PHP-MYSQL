@@ -20,7 +20,7 @@ ul
     box-shadow: 15px 15px 0px rgba(0, 0, 0, .5);
     overflow: auto;
 }
-input
+.disciplinas
 {
     background: white;
     border: 15px;
@@ -29,6 +29,18 @@ input
     padding: 50px;
     border-radius: 15px;
 
+}
+.pesquisa
+{
+    position: relative;
+    float: right;
+    text-align: center;
+    border-radius: 20px;
+    padding: 4px;
+    border: 1px solid rgb(223, 222, 222);
+    font-size: 20px;
+    top: 10px;
+    width: 200px;
 }
 h1
 {
@@ -59,7 +71,7 @@ ul li
     margin-top: 20px;
 }
 
-input:hover
+.disciplinas:hover
 {
     background: #922fc0;
     border-radius: 15px;
@@ -117,7 +129,7 @@ input:hover
     font-weight: bold;
     font-size: 45px;
     margin-left: 10px;
-    border-radius: 0 0 15px;
+    border-radius: 15px 0 15px 0;
     border: none;
     box-shadow: 5px 5px 0px rgba(0, 0, 0, .6);
     transition: .6s;
@@ -126,6 +138,13 @@ input:hover
 {
     cursor: pointer;
     transform: rotateX(360deg);
+}
+#lupa
+{
+    position: relative;
+    float: right;
+    bottom: 53px;
+    right: 10px;
 }
 
 
