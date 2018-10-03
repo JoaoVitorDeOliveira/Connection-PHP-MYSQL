@@ -5,8 +5,8 @@
     $palavra = $_GET['pesq'];
 
     $query = "SELECT tb_disciplinas.Disciplinas, tb_perguntas.Perguntas, tb_respostas.Respostas, tb_disciplinas.DisciplinasID 
-                FROM ((`tb_perguntas` LEFT JOIN tb_respostas ON tb_perguntas.PerguntasID = tb_respostas.PerguntasID)
-                LEFT JOIN tb_disciplinas ON tb_disciplinas.DisciplinasID = tb_perguntas.DisciplinasID)
+                FROM ((`tb_disciplinas` LEFT JOIN tb_perguntas ON tb_disciplinas.DisciplinasID = tb_perguntas.DisciplinasID)
+                LEFT JOIN tb_respostas ON tb_perguntas.PerguntasID = tb_respostas.PerguntasID)
                 WHERE tb_disciplinas.Disciplinas LIKE '%{$palavra}%' OR tb_perguntas.Perguntas LIKE '%{$palavra}%' OR `Respostas` LIKE '%{$palavra}%'";
 
     $pesq = mysqli_query($conectar, $query);
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/stylesPesquisarPorPalavras.css">    
 </head>
 <body>
-	<h1><center>Tabela</center></h1>
+    
 	<div class="container">
 		<table style="width: 800px; max-width: 800px;" >
 			<thead>

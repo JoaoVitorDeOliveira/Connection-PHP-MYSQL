@@ -133,16 +133,12 @@ textarea
 {
     width: 100%;
 }
-ul li ul li:nth-child(even)
+
+/*ul li ul li:nth-child(even)
 {
     background: rgb(179, 178, 178);
     color: white;
-}
-ul li ul li:nth-last-child()
-{
-    padding: 0;
-    border: none;
-}
+}*/
 spam
 {
     background: rgb(2, 187, 2);

@@ -58,6 +58,7 @@
                     <input type='hidden' name='id' value='<?php echo $idDaMateria;?>'/>
                 </form>
                 <button id="btn" name= "mat" onclick="inserirPergunta()" class="add" form="teste">+</button>
+                
                 <form action="pesquisarPorPalavras.php" method="GET" id='pesquisa'>
                     <input type='text' name='pesq' class='pesquisa'/>                    
                 </form >
@@ -116,17 +117,33 @@
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
                                     while($respostas=mysqli_fetch_assoc($querys)){
                                         $contarResp = $contarResp + 1;
+                                        echo "<script>
+                                                 function deletarResposta{$respostas['RespostasID']}(){
+                                                    if(confirm('Tem certeza que deseja excluir ?')){
+                                                        javascript:window.location='deletarRespostas.php?id={$respostas['RespostasID']}';
+                                                    }
+                                                }
+
+                                                function corrigeResposta{$respostas['RespostasID']}(){
+                                                    if(confirm('Tem certeza que deseja alterar a mensagem ?')){
+                                                        
+                                                    }                                                
+                                                }
+                                        
+                                            </script>";     
                                         //verifica se é link ou não a resposta
                                         if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
                                         echo  "<li >
-                                                <i onclick='inserirPergunta()' class='fas fa-pencil-alt'></i>
+                                                <i onclick='corrigeResposta{$respostas['RespostasID']}()' class='fas fa-pencil-alt'></i>
+                                                <i onclick='deletarResposta{$respostas['RespostasID']}()' class='fas fa-trash-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
                                                 <a href='{$respostas['Respostas']}'>{$respostas['Respostas']}</a>
                                             </li> ";
                                         }
                                         else{
                                         echo  "<li >
-                                                <i onclick='inserirPergunta()' class='fas fa-pencil-alt'></i>
+                                                <i onclick='corrigeResposta{$respostas['RespostasID']}()' class='fas fa-pencil-alt'></i>
+                                                <i onclick='deletarResposta{$respostas['RespostasID']}()' class='fas fa-trash-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
                                                 {$respostas['Respostas']}
                                             </li> ";
