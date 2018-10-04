@@ -19,7 +19,7 @@
         }
 
         function irParaBiblioteca(){
-            javascript:window.location='http://una.bv3.digitalpages.com.br/users/publications';
+            javascript:window.open('http://una.bv3.digitalpages.com.br/users/publications');
         }
 
         $(function() { 
