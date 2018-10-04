@@ -24,6 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesCriarTabelasGenericas.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
             function escondeEsconde() {
             var x = document.getElementById('respostas');
@@ -44,6 +45,22 @@
             function voltarDisciplinas(){
                 javascript:window.location='disciplinasTelaPrincipal.php';
             }
+
+            $(function() { 
+                var numToShow = 2;
+                var moreLi;
+                $('#respostas').children('li').hide().each(function() {
+                    if ($(this).index() < numToShow) {
+                        $(this).show();
+                    }
+                }).parent('ul').append('<li><a href="#" id="showMore">More</a></li>');
+            
+                $('#showMore').click(function() {
+                    moreLi = $(this).parent('li');
+                    moreLi.siblings().show();
+                    moreLi.remove();
+                });
+            });
 
         </script>
 </head>
@@ -101,6 +118,7 @@
                         function testaExclusao{$contar}(){
                             alert('Atenção: Perguntas já respondidas não serão deletadas');                        
                         }
+
                     </script>";
 
                 echo   "<li>
@@ -128,30 +146,30 @@
                                                     if(confirm('Tem certeza que deseja alterar a mensagem ?')){
                                                         
                                                     }                                                
-                                                }
+                                                }                                               
                                         
                                             </script>";     
                                         //verifica se é link ou não a resposta
                                         if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
-                                        echo  "<li >
+                                        echo  "<li>
                                                 <i onclick='corrigeResposta{$respostas['RespostasID']}()' class='fas fa-pencil-alt'></i>
                                                 <i onclick='deletarResposta{$respostas['RespostasID']}()' class='fas fa-trash-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
-                                                <a href='{$respostas['Respostas']}'>{$respostas['Respostas']}</a>
+                                                <pre><a href='{$respostas['Respostas']}'>{$respostas['Respostas']}</a></pre>
                                             </li> ";
                                         }
                                         else{
-                                        echo  "<li >
+                                        echo  "<li>
                                                 <i onclick='corrigeResposta{$respostas['RespostasID']}()' class='fas fa-pencil-alt'></i>
                                                 <i onclick='deletarResposta{$respostas['RespostasID']}()' class='fas fa-trash-alt'></i>
                                                 <div class='nomeDaPessoaQuePerguntou'>{$respostas['NomesAlunos']} respondeu: </div>
-                                                {$respostas['Respostas']}
+                                                <pre>{$respostas['Respostas']}</pre>
                                             </li> ";
                                         }    
                                     }                                    
                 echo               "<li>
                                         <form action='inserirRespostas.php' method='GET'>
-                                            <textarea rows='4' cols='50' name='textarea'></textarea>
+                                            <textarea rows='4' cols='10' name='textarea'></textarea>
                                             <input type='hidden' name='pergID' value='{$perguntas['PerguntasID']}'/>
                                             <input class='btn_enviarResposta' type='submit' value='enviar' />
                                         </form>

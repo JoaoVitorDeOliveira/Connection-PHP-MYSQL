@@ -49,7 +49,7 @@ li
 ul li ul li
 {
    padding: 20px;
-   font-size: 18px;
+   font-size: 17px;
    font-weight: bold;
    border: 1px solid gray;
    margin: 10px;
@@ -196,4 +196,10 @@ spam
     position: relative;
     float: right;
     bottom: 35px;
+}
+pre
+{
+    white-space:pre-line;
+    overflow:auto;
+    font-family:sans-serif
 }
