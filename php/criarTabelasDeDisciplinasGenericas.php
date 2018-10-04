@@ -25,49 +25,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesCriarTabelasGenericas.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            function escondeEsconde() {
-            var x = document.getElementById('respostas');
-            if (x.style.display === 'none') {
-            x.style.display = 'block';
-            } else {
-            x.style.display = 'none';
-            }      
-        }
-
-            function inserirPergunta() {
-            var i = prompt("Digite a sua pergunta:", "");
-            if (i != null) { 
-                document.getElementById("btn").value = i;
-                }
-            }
-
-            function voltarDisciplinas(){
-                javascript:window.location='disciplinasTelaPrincipal.php';
-            }
-
-            $(function() { 
-                var numToShow = 2;
-                var moreLi;
-                $('#respostas').children('li').hide().each(function() {
-                    if ($(this).index() < numToShow) {
-                        $(this).show();
-                    }
-                }).parent('ul').append('<li><a href="#" id="showMore">More</a></li>');
-            
-                $('#showMore').click(function() {
-                    moreLi = $(this).parent('li');
-                    moreLi.siblings().show();
-                    moreLi.remove();
-                });
-            });
-
-        </script>
+    <script src="../js/funcoesBasicas.js"></script>            
 </head>
 <body>
     <button id="voltar" class="fas fa-arrow-left" style="font-size:20px;"onclick='voltarDisciplinas()'></button>
     <h1 ><?php echo $nomeDaMateria ?></h1>
-
+    
+    <button onclick="irParaBiblioteca()" class='barraLateral'style='float:left'></button>
     <section>
         <ul>
             <div class="crud">
@@ -82,7 +46,7 @@
                 <i id='lupa' class="fas fa-search" form='pesquisa'></i>
                 
             </div>
-            <li>
+            <li name="frasePadraoQueAparece">
                 <div>
                     <h2 onclick='escondeEsconde()'>Como Funciona ?! Clique aqui e descubra !</h2>
                     <ul id='respostas' style='display: none;'>
@@ -101,8 +65,10 @@
                     $contar = $contar + 1;
                     $contarResp = 0;
                     $idDaPergunta;
-                    //Pra cada coluna da tabela, está sendo criado um js com metodo de esconder os valores 
-                echo "
+                     
+  
+                //Pra cada coluna da tabela, está sendo criado um js com metodo de esconder os valores
+                    echo "
                     <script >
                         function escondeEsconde{$contar}() {
                         var x = document.getElementById('respostas{$contar}');
@@ -113,7 +79,7 @@
                         } else {
                         x.style.display = 'none';
                         }
-                    }
+                        }
 
                         function testaExclusao{$contar}(){
                             alert('Atenção: Perguntas já respondidas não serão deletadas');                        
@@ -121,7 +87,7 @@
 
                     </script>";
 
-                echo   "<li>
+                    echo "<li>
                             <div>
                                 <form action='deletarPerguntas.php' method='GET'>
                                     <button onclick='testaExclusao{$contar}()' name='delPerg' class='del' value='{$perguntas['PerguntasID']}'>x</button>
@@ -146,8 +112,7 @@
                                                     if(confirm('Tem certeza que deseja alterar a mensagem ?')){
                                                         
                                                     }                                                
-                                                }                                               
-                                        
+                                                }                                                         
                                             </script>";     
                                         //verifica se é link ou não a resposta
                                         if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
@@ -167,7 +132,7 @@
                                             </li> ";
                                         }    
                                     }                                    
-                echo               "<li>
+                    echo           "<li>
                                         <form action='inserirRespostas.php' method='GET'>
                                             <textarea rows='4' cols='10' name='textarea'></textarea>
                                             <input type='hidden' name='pergID' value='{$perguntas['PerguntasID']}'/>
@@ -181,8 +146,7 @@
                 }
                 
             ?>
-        </ul>
-        
+        </ul>        
     </section>
 </body>
 </html>

@@ -20,7 +20,8 @@ h1
     text-align: center;
     border-radius: 0 20px 20px 20px;
     font-weight: bold;
-    background: rgb(8, 102, 243);
+    background: url(../res/banner_pos_site_1920x450px.jpg);
+    background-position-y: -60px;
     
 }
 h2
@@ -202,4 +203,20 @@ pre
     white-space:pre-line;
     overflow:auto;
     font-family:sans-serif
+}
+.barraLateral
+{
+    width: 150px;
+    margin-right: 20px;
+    background: url(../res/bibVirtual.png);
+    background-position-x: -200px;
+    height: 600px;
+    border-radius: 20px;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+}
+.barraLateral:hover
+{
+    cursor: pointer;
 }
