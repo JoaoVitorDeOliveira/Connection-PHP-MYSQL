@@ -58,7 +58,7 @@
             </li>
 
             <?php 
-                $query = mysqli_query($conectar, "SELECT * FROM TB_PERGUNTAS WHERE DisciplinasID = {$idDaMateria} ORDER BY `PerguntasID` DESC");
+                $query = mysqli_query($conectar, "SELECT * FROM tb_perguntas WHERE DisciplinasID = {$idDaMateria} ORDER BY `PerguntasID` DESC");
                 $contar = 0;        
                 while($perguntas=mysqli_fetch_assoc($query)){ 
                     //variavel usada com o javascript                  
@@ -98,7 +98,7 @@
                                 <ul id='respostas{$contar}' style='display: none;'>";
 
                                     //Seleciona as respostas sobre a pergunta
-                                    $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
+                                    $querys = mysqli_query($conectar, "SELECT * FROM tb_respostas WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
                                     while($respostas=mysqli_fetch_assoc($querys)){
                                         $contarResp = $contarResp + 1;
                                         echo "<script>

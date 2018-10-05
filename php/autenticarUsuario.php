@@ -5,7 +5,7 @@
     $ra = $_POST['ra'];
     $senha = $_POST['senha'];
 
-    $query = mysqli_query($conectar, "SELECT * FROM TB_CADASTRO_ALUNOS");
+    $query = mysqli_query($conectar, "SELECT * FROM `tb_cadastro_alunos`");
 
     while ($i = mysqli_fetch_assoc($query)) { 
         if($i['RA'] == $ra && $i['SENHA'] == $senha){

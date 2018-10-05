@@ -41,7 +41,7 @@
             <i id='lupa' class="fas fa-search" form='pesquisa'></i>
 		<?php 
             //Preenchendo a tabela com os dados
-            $query = mysqli_query($conectar, "SELECT * FROM TB_DISCIPLINAS ORDER BY `DisciplinasID` DESC");
+            $query = mysqli_query($conectar, "SELECT * FROM tb_disciplinas ORDER BY `DisciplinasID` DESC");
 
             while ($i = mysqli_fetch_assoc($query)) { 
 
