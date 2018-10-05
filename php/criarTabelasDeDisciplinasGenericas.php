@@ -20,12 +20,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesCriarTabelasGenericas.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="../js/funcoesBasicas.js"></script>            
+    <script src="../js/funcoesTelaDisciplinasGenericas.js"></script>            
 </head>
 <body>
     <button id="voltar" class="fas fa-arrow-left" style="font-size:20px;"onclick='voltarDisciplinas()'></button>
@@ -51,8 +50,9 @@
                     <h2 onclick='escondeEsconde()'>Como Funciona ?! Clique aqui e descubra !</h2>
                     <ul id='respostas' style='display: none;'>
                         <li>Ao clicar no botão verde vai aparecer um campo para que você possa escrever sua pergunta.</li>
+                        <script></script>
                         <li>Logo após, sua pergunta aparecerá e estará disponivel para qualquer um responder. </li>
-                        <li>Ao clicar nela todas as respostas até o momento irão aparecer e o campo para responder a pergunta também.</li>
+                        <li>Ao clicar nela todas as respostas até o momento irão aparecer e o campo para responder a pergunta também.</li>                        
                     </ul>
                 </div>
             </li>
@@ -84,7 +84,6 @@
                         function testaExclusao{$contar}(){
                             alert('Atenção: Perguntas já respondidas não serão deletadas');                        
                         }
-
                     </script>";
 
                     echo "<li>
@@ -97,6 +96,7 @@
                                         {$perguntas['Perguntas']}                                        
                                 </h2>            
                                 <ul id='respostas{$contar}' style='display: none;'>";
+
                                     //Seleciona as respostas sobre a pergunta
                                     $querys = mysqli_query($conectar, "SELECT * FROM TB_RESPOSTAS WHERE PerguntasID = {$perguntas['PerguntasID']}");                            
                                     while($respostas=mysqli_fetch_assoc($querys)){
@@ -109,11 +109,12 @@
                                                 }
 
                                                 function corrigeResposta{$respostas['RespostasID']}(){
-                                                    if(confirm('Tem certeza que deseja alterar a mensagem ?')){
-                                                        
+                                                    if(confirm('Tem certeza que deseja alterar a mensagem ?')){";  
+                                                        $url = urlencode($respostas['Respostas']);                                
+                                        echo       "javascript:window.location='corrigirResposta.php?res={$url}&id={$respostas['RespostasID']}';
                                                     }                                                
-                                                }                                                         
-                                            </script>";     
+                                                }  
+                                            </script>";
                                         //verifica se é link ou não a resposta
                                         if(strncmp($respostas['Respostas'], "http", 4 ) === 0){
                                         echo  "<li>
@@ -131,7 +132,8 @@
                                                 <pre>{$respostas['Respostas']}</pre>
                                             </li> ";
                                         }    
-                                    }                                    
+                                    }             
+
                     echo           "<li>
                                         <form action='inserirRespostas.php' method='GET'>
                                             <textarea rows='4' cols='10' name='textarea'></textarea>

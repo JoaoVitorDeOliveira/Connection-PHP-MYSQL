@@ -21,22 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesDisciplinasTelaPrincipal.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> 
-    <script>
-        function inserirDisciplina() {
-            var x = prompt("Digite o nome da matéria:", "");
-            if (x != null) { 
-                document.getElementById("btn").value = x;
-            }
-        }   
-
-        function deletaDisciplina(){
-            confirm("ATENÇão: Disciplinas com perguntas não serão excluidas");
-        }
-
-        function voltaTelaDeLogin(){
-            window.location.href="../html/telaDeLogin.html";            
-        }
-    </script>
+    <script src="../js/funcoesDisciplinasTelaPrincipal.js"></script>
 </head>
 <body>
 

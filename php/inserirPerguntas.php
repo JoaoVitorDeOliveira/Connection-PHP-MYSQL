@@ -13,7 +13,7 @@
 
         mysqli_query($conectar, "INSERT INTO TB_PERGUNTAS(DisciplinasID, Perguntas, NomesAlunos) VALUES('{$idDaMateria}', '{$pergunta}', '{$nomeDoAluno}')");
 
-        header("location:criarTabelasDeDisciplinasGenericas.php");
-        
-}
+        header("location:criarTabelasDeDisciplinasGenericas.php");        
+    }
+    
 ?>
